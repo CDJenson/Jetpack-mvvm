@@ -1,0 +1,17 @@
+<resources >
+    <string name="app_name">Jetpack-mvvm</string>
+
+
+
+
+    <string name="cat_textfield_label" translatable="false">Label</string>
+    <string name="cat_textfield_password" translatable="false">Password</string>
+    <string name="cat_textfield_error" translatable="false">Error</string>
+    <string name="cat_textfield_placeholder_text" translatable="false">Placeholder text</string>
+
+    <string name="cat_textfield_filled_helper_text" translatable="false">Filled text field</string>
+    <string name="cat_textfield_filled_dense_helper_text" translatable="false">Dense filled text field</string>
+    <string name="cat_textfield_filled_dense_password_helper_text" translatable="false">
+    Dense filled password text field
+  </string>
+</resources>

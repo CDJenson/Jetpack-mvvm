@@ -1,0 +1,5 @@
+rootProject.name='Jetpack-mvvm'
+include ':app'
+include ':mvpTest'
+include ':lib_common'
+include ':lib_api'

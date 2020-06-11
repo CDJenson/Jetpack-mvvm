@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="cc_cang">#75878A</color>
+    <color name="cc_cang_cui">#519a73</color>
+    <color name="cc_cang_huang">#a29b7c</color>
+    <color name="cc_cang_qing">#7397ab</color>
+    <color name="cc_cang_hei">#395260</color>
+    <color name="cc_cang_bai">#d1d9e0</color>
+</resources>

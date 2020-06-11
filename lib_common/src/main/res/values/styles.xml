@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ToolbarThemeBlack" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+
+    </style>
+
+    <style name="ToolbarThemeWhite" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="subtitleTextColor">#FFFFFF</item>
+        <item name="android:background">?attr/colorPrimary</item>
+    </style>
+
+    <style name="ToolbarThemeWhite.OverFlowMenuTheme" parent="ThemeOverlay.AppCompat.Dark">
+
+    </style>
+
+    <style name="ToolbarThemeBlack.OverFlowMenuTheme" parent="ThemeOverlay.AppCompat.Light">
+
+    </style>
+</resources>
