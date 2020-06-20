@@ -1,8 +1,8 @@
-package com.jenson.api.NeteaseCloudMusic.response;
+package com.jenson.api.netease_cloud_music.response;
 
-import com.jenson.api.NeteaseCloudMusic.bean.AccountBean;
-import com.jenson.api.NeteaseCloudMusic.bean.BindingsBean;
-import com.jenson.api.NeteaseCloudMusic.bean.ProfileBean;
+import com.jenson.api.netease_cloud_music.bean.AccountBean;
+import com.jenson.api.netease_cloud_music.bean.BindingsBean;
+import com.jenson.api.netease_cloud_music.bean.ProfileBean;
 
 import java.util.List;
 

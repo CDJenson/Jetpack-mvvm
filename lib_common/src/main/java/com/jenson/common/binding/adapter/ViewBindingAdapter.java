@@ -4,6 +4,7 @@ import android.view.View;
 
 import androidx.databinding.BindingAdapter;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.jenson.common.binding.command.BindingCommand;
 import com.jenson.common.binding.command.BindingResponseCommand;
 
@@ -26,32 +27,34 @@ public class ViewBindingAdapter {
      */
     @BindingAdapter(value = {"onClickCommand", "disableThrottle"}, requireAll = false)
     public static void onClickCommand(View view, final BindingCommand bindingCommand, final boolean disableThrottle) {
-            view.setOnClickListener(new onThrottleHelper(disableThrottle, new onThrottleClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (bindingCommand != null) {
-                        try {
-                            bindingCommand.execute();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+        LogUtils.d("12314123");
+        view.setOnClickListener(new onThrottleHelper(disableThrottle, new onThrottleClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (bindingCommand != null) {
+                    try {
+                        bindingCommand.execute();
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
                 }
-            }));
+            }
+        }));
     }
 
     /**
      * 长按事件
      * setOnLongClickListener 返回值为false会继续执行onClick事件，为true则只会消费onLongClick方法
+     *
      * @param view
      * @param bindingResponseCommand
      */
     @BindingAdapter({"onLongClickCommand"})
-    public static void onLongClickCommand(View view, final BindingResponseCommand<View,Boolean> bindingResponseCommand) {
+    public static void onLongClickCommand(View view, final BindingResponseCommand<View, Boolean> bindingResponseCommand) {
         view.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                if(bindingResponseCommand != null){
+                if (bindingResponseCommand != null) {
                     try {
                         return bindingResponseCommand.execute(v);
                     } catch (Exception e) {
@@ -65,6 +68,7 @@ public class ViewBindingAdapter {
 
     /**
      * 焦点变更事件
+     *
      * @param view
      * @param onFocusChangeCommand
      */

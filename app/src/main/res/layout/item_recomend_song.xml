@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+        <import type="com.jenson.demo.R" />
+
+        <variable
+            name="item"
+            type="com.jenson.api.netease_cloud_music.bean.Song" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="3dp"
+        app:cardBackgroundColor="#FFFFFF"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        tools:context=".ui.MainActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="@dimen/margin"
+            android:paddingEnd="@dimen/margin">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/item_iv_album"
+                android:layout_width="66dp"
+                android:layout_height="66dp"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                error="@{R.drawable.ic_error}"
+                placeholder="@{R.drawable.ic_placeholder}"
+                url="@{item.album.picUrl}"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_tv_song"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="4dp"
+                android:text="@{item.name}"
+                app:layout_constraintStart_toEndOf="@+id/item_iv_album"
+                app:layout_constraintTop_toTopOf="@+id/item_iv_album" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_tv_artist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:ellipsize="end"
+                android:text="@{item.artists.get(0).name +'-'+ item.album.name}"
+                app:layout_constraintBottom_toBottomOf="@+id/item_iv_album"
+                app:layout_constraintStart_toStartOf="@+id/item_tv_song" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+</layout>

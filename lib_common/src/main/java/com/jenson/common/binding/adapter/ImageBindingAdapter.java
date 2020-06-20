@@ -3,6 +3,7 @@ package com.jenson.common.binding.adapter;
 import android.text.TextUtils;
 import android.widget.ImageView;
 
+import androidx.annotation.DrawableRes;
 import androidx.databinding.BindingAdapter;
 
 import com.bumptech.glide.Glide;
@@ -16,7 +17,7 @@ import com.bumptech.glide.Glide;
 public class ImageBindingAdapter {
 
     @BindingAdapter(value = {"url", "placeholder","error"}, requireAll = false)
-    public static void setImageUri(ImageView imageView, String url, int placeholder,int error) {
+    public static void setImageUri(ImageView imageView, String url, @DrawableRes int placeholder, @DrawableRes int error) {
         if (!TextUtils.isEmpty(url)) {
             //使用Glide框架加载图片
             Glide.with(imageView.getContext())

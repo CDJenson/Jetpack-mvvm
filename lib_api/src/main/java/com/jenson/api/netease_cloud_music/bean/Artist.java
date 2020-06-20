@@ -1,4 +1,4 @@
-package com.jenson.api.NeteaseCloudMusic.bean;
+package com.jenson.api.netease_cloud_music.bean;
 
 import java.util.List;
 

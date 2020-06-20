@@ -1,6 +1,6 @@
-package com.jenson.api.NeteaseCloudMusic.api;
+package com.jenson.api.netease_cloud_music.api;
 
-import com.jenson.api.NeteaseCloudMusic.response.RecommendSongsResponse;
+import com.jenson.api.netease_cloud_music.response.RecommendSongsResponse;
 
 import io.reactivex.rxjava3.core.Observable;
 import retrofit2.http.GET;

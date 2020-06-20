@@ -1,14 +1,11 @@
 package com.jenson.demo.ui;
 
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.Toast;
 
 import androidx.databinding.library.baseAdapters.BR;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.jenson.common.binding.command.BindingCommand;
-import com.jenson.common.binding.command.BindingResponseCommand;
 import com.jenson.common.mvvm.BaseActivity;
 import com.jenson.common.mvvm.DataBindingConfig;
 import com.jenson.demo.R;
@@ -40,7 +37,7 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
     }
 
     @Override
-    public void subscribeUi() {
+    public void initView() {
 
     }
 
@@ -68,7 +65,7 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
             }
         }
 
-        public BindingCommand onClickLogin = new BindingCommand(()->mViewModel.login(), () -> {
+        public BindingCommand<?> onClickLogin = new BindingCommand<>(()->mViewModel.login(), () -> {
             boolean result = true;
             if(TextUtils.isEmpty(mBinding.etUsername.getText())){
                 mBinding.tilUsername.setError("用户名不能为空");
@@ -81,9 +78,5 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
             return result;
         });
 
-        public BindingResponseCommand onLongClickLogin = new BindingResponseCommand<View, Boolean>(view -> {
-            Toast.makeText(getApplication(), "Boom Boom Boom", Toast.LENGTH_SHORT).show();
-            return true;
-        });
     }
 }

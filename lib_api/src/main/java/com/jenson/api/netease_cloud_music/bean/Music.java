@@ -1,4 +1,4 @@
-package com.jenson.api.NeteaseCloudMusic.bean;
+package com.jenson.api.netease_cloud_music.bean;
 
 /**
  * author: CDJenson
@@ -27,7 +27,7 @@ public class Music {
     private int dfsId;
     private int bitrate;
     private int playTime;
-    private int volumeDelta;
+    private String volumeDelta;
 
     public Object getName() {
         return name;
@@ -93,11 +93,11 @@ public class Music {
         this.playTime = playTime;
     }
 
-    public int getVolumeDelta() {
+    public String getVolumeDelta() {
         return volumeDelta;
     }
 
-    public void setVolumeDelta(int volumeDelta) {
+    public void setVolumeDelta(String volumeDelta) {
         this.volumeDelta = volumeDelta;
     }
 }

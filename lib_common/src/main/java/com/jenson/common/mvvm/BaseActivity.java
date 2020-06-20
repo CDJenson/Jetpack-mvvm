@@ -51,13 +51,14 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_root);
-        initRootView();
-        initViewDataBinding();
+        initRootLayout();
+        initDataBinding();
         initUiEvent();
+        initView();
         initData();
     }
 
-    private void initRootView() {
+    private void initRootLayout() {
         //设置toolbar
         if (enableToolbar()) {
             ViewStub viewStubToolBar = findViewById(R.id.view_stub_toolbar);
@@ -85,14 +86,14 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
         contentWrap.addView(content);
     }
 
-    private void initViewDataBinding() {
+    private void initDataBinding() {
         mBinding = DataBindingUtil.setContentView(this, onBindContentView());
         mViewModel = createViewModel();
         mDataBindingConfig = initDataBindingConfig();
         if (mBinding != null && mDataBindingConfig != null) {
             mBinding.setVariable(mDataBindingConfig.getVariableId(), mViewModel);
 
-            SparseArray bindingParams = mDataBindingConfig.getBindingParams();
+            SparseArray<?> bindingParams = mDataBindingConfig.getBindingParams();
             for (int i = 0; i < bindingParams.size(); i++) {
                 mBinding.setVariable(bindingParams.keyAt(i), bindingParams.valueAt(i));
             }
@@ -106,7 +107,6 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
     private void initUiEvent() {
         subscribeStateView();
         subscribePageControl();
-        subscribeUi();
     }
 
     //多状态视图控制

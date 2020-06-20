@@ -14,7 +14,7 @@ public interface IBaseView {
 
     DataBindingConfig initDataBindingConfig();
 
-    void subscribeUi();
+    void initView();
 
     void initData();
 }

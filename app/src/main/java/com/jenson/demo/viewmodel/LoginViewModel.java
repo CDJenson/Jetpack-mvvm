@@ -8,7 +8,7 @@ import androidx.lifecycle.LifecycleEventObserver;
 
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.ToastUtils;
-import com.jenson.api.NeteaseCloudMusic.response.LoginResponse;
+import com.jenson.api.netease_cloud_music.response.LoginResponse;
 import com.jenson.common.http.ApiException;
 import com.jenson.common.http.ApiObserver;
 import com.jenson.common.http.RxAdapter;

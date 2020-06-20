@@ -1,7 +1,7 @@
 package com.jenson.demo.model;
 
-import com.jenson.api.NeteaseCloudMusic.api.RecommendApi;
-import com.jenson.api.NeteaseCloudMusic.response.RecommendSongsResponse;
+import com.jenson.api.netease_cloud_music.api.RecommendApi;
+import com.jenson.api.netease_cloud_music.response.RecommendSongsResponse;
 import com.jenson.common.http.RetrofitClient;
 import com.jenson.common.mvvm.model.BaseModel;
 import com.jenson.demo.entity.LoginResp;

@@ -1,8 +1,8 @@
 package com.jenson.demo.model;
 
 import com.blankj.utilcode.util.RegexUtils;
-import com.jenson.api.NeteaseCloudMusic.api.UserApi;
-import com.jenson.api.NeteaseCloudMusic.response.LoginResponse;
+import com.jenson.api.netease_cloud_music.api.UserApi;
+import com.jenson.api.netease_cloud_music.response.LoginResponse;
 import com.jenson.common.http.RetrofitClient;
 import com.jenson.common.mvvm.model.BaseModel;
 

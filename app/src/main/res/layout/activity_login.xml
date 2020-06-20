@@ -82,8 +82,7 @@
             android:layout_marginTop="30dp"
             android:text="登录"
             onClickCommand="@{clickProxy.onClickLogin}"
-            disableThrottle="@{Boolean.FALSE}"
-            onLongClickCommand="@{clickProxy.onLongClickLogin}"/>
+            disableThrottle="@{Boolean.FALSE}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

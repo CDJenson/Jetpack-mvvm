@@ -1,4 +1,4 @@
-package com.jenson.api.NeteaseCloudMusic.response;
+package com.jenson.api.netease_cloud_music.response;
 
 import java.io.Serializable;
 

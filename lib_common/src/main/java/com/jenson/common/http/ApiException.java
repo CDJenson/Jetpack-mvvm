@@ -4,6 +4,7 @@ import android.net.ParseException;
 
 import androidx.annotation.Nullable;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.google.gson.JsonParseException;
 
 import org.apache.http.conn.ConnectTimeoutException;
@@ -27,6 +28,7 @@ public class ApiException extends Exception {
 
     public ApiException(Throwable throwable) {
         super(throwable);
+        LogUtils.e(throwable);
         parseThrowable(throwable);
     }
 

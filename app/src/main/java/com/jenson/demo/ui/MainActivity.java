@@ -1,21 +1,22 @@
 package com.jenson.demo.ui;
 
-import androidx.lifecycle.Observer;
+import androidx.annotation.NonNull;
+import androidx.databinding.ViewDataBinding;
 
-import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.appbar.MaterialToolbar;
-import com.jenson.common.event.LiveBus;
+import com.jenson.api.netease_cloud_music.bean.Song;
 import com.jenson.common.mvvm.BaseActivity;
 import com.jenson.common.mvvm.DataBindingConfig;
 import com.jenson.demo.BR;
-import com.jenson.demo.entity.LoginResp;
 import com.jenson.demo.R;
 import com.jenson.demo.databinding.ActivityMainBinding;
 import com.jenson.demo.viewmodel.MainViewModel;
 
-public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewModel> {
+import me.tatarka.bindingcollectionadapter2.BindingRecyclerViewAdapter;
+import me.tatarka.bindingcollectionadapter2.ItemBinding;
 
-    Observer<LoginResp> observer = loginResp -> LogUtils.dTag("main"+loginResp.toString());
+public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewModel> {
 
     @Override
     protected void initToolbar(MaterialToolbar toolbar) {
@@ -34,8 +35,12 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     }
 
     @Override
-    public void subscribeUi() {
-        LiveBus.getInstance().with(LoginResp.class).observeForever(observer,true);
+    public void initView() {
+        ItemBinding<Song> itemBinding = ItemBinding.of(BR.item, R.layout.item_recomend_song);
+        RecomendSongAdapter adapter = new RecomendSongAdapter();
+        adapter.setItemBinding(itemBinding);
+        adapter.setItems(mViewModel.items);
+        mBinding.activityRecommendSongRv.setAdapter(adapter);
     }
 
     @Override
@@ -43,9 +48,11 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         mViewModel.initData();
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        LiveBus.getInstance().with(LoginResp.class).removeObserver(observer);
+    public static class RecomendSongAdapter extends BindingRecyclerViewAdapter<Song>{
+        @Override
+        public void onBindBinding(@NonNull ViewDataBinding binding, int variableId, int layoutRes, int position, Song item) {
+            super.onBindBinding(binding, variableId, layoutRes, position, item);
+            binding.getRoot().setOnClickListener(v -> ToastUtils.showShort(item.getName()));
+        }
     }
 }

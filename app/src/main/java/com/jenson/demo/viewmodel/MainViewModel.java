@@ -3,10 +3,12 @@ package com.jenson.demo.viewmodel;
 import android.app.Application;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.ObservableField;
+import androidx.databinding.ObservableArrayList;
+import androidx.databinding.ObservableList;
 import androidx.lifecycle.LifecycleEventObserver;
 
-import com.jenson.api.NeteaseCloudMusic.response.RecommendSongsResponse;
+import com.jenson.api.netease_cloud_music.bean.Song;
+import com.jenson.api.netease_cloud_music.response.RecommendSongsResponse;
 import com.jenson.common.http.ApiException;
 import com.jenson.common.http.ApiObserver;
 import com.jenson.common.http.RxAdapter;
@@ -21,8 +23,7 @@ import com.jenson.demo.model.MainModel;
  */
 public class MainViewModel extends BaseViewModel<MainModel> {
 
-    public ObservableField<String> text = new ObservableField<>();
-    public ObservableField<String> album = new ObservableField<>();
+    public final ObservableList<Song> items = new ObservableArrayList<>();
 
     public MainViewModel(@NonNull Application application) {
         super(application);
@@ -51,9 +52,9 @@ public class MainViewModel extends BaseViewModel<MainModel> {
                     @Override
                     public void onNext(RecommendSongsResponse recommendSongsResponse) {
                         postShowContentViewEvent();
-                        album.set(recommendSongsResponse.getRecommend().get(0).getAlbum().getBlurPicUrl());
-                        text.set(recommendSongsResponse.getRecommend().get(0).getName());
+                        items.addAll(recommendSongsResponse.getRecommend());
                     }
                 });
+
     }
 }
