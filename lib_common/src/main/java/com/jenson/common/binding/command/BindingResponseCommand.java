@@ -30,21 +30,21 @@ public class BindingResponseCommand<T, R> {
     }
 
 
-    public R execute() throws Exception {
+    public R execute() {
         if (function0 != null && canExecute()) {
             return function0.call();
         }
         return null;
     }
 
-    public R execute(T parameter) throws Exception {
+    public R execute(T parameter) {
         if (function1 != null && canExecute()) {
             return function1.call(parameter);
         }
         return null;
     }
 
-    private boolean canExecute() throws Exception {
+    private boolean canExecute() {
         if (canExecute == null) {
             return true;
         }

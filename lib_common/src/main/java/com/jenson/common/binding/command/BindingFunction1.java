@@ -9,5 +9,5 @@ import androidx.annotation.NonNull;
  * description: One-sentence description
  */
 public interface BindingFunction1<T, R> {
-    R call(@NonNull T t) throws Exception;
+    R call(@NonNull T t);
 }

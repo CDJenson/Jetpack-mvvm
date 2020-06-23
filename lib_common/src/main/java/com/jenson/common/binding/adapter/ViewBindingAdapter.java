@@ -4,7 +4,6 @@ import android.view.View;
 
 import androidx.databinding.BindingAdapter;
 
-import com.blankj.utilcode.util.LogUtils;
 import com.jenson.common.binding.command.BindingCommand;
 import com.jenson.common.binding.command.BindingResponseCommand;
 
@@ -27,16 +26,11 @@ public class ViewBindingAdapter {
      */
     @BindingAdapter(value = {"onClickCommand", "disableThrottle"}, requireAll = false)
     public static void onClickCommand(View view, final BindingCommand bindingCommand, final boolean disableThrottle) {
-        LogUtils.d("12314123");
         view.setOnClickListener(new onThrottleHelper(disableThrottle, new onThrottleClickListener() {
             @Override
             public void onClick(View view) {
                 if (bindingCommand != null) {
-                    try {
-                        bindingCommand.execute();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    bindingCommand.execute();
                 }
             }
         }));
@@ -55,11 +49,7 @@ public class ViewBindingAdapter {
             @Override
             public boolean onLongClick(View v) {
                 if (bindingResponseCommand != null) {
-                    try {
-                        return bindingResponseCommand.execute(v);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    return bindingResponseCommand.execute(v);
                 }
                 return false;
             }
@@ -78,11 +68,7 @@ public class ViewBindingAdapter {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (onFocusChangeCommand != null) {
-                    try {
-                        onFocusChangeCommand.execute(hasFocus);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    onFocusChangeCommand.execute(hasFocus);
                 }
             }
         });

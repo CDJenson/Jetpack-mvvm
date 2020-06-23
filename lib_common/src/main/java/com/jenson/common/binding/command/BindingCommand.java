@@ -31,19 +31,19 @@ public class BindingCommand<T> {
     }
 
 
-    public void execute() throws Exception {
+    public void execute() {
         if (execute0 != null && canExecute()) {
             execute0.call();
         }
     }
 
-    public void execute(T t) throws Exception {
+    public void execute(T t) {
         if (execute1 != null && canExecute()) {
             execute1.call(t);
         }
     }
 
-    private boolean canExecute() throws Exception {
+    private boolean canExecute() {
         if (canExecute == null) {
             return true;
         }

@@ -23,7 +23,8 @@ ext {
 
             "retrofit"                   : "2.9.0",
             "glide"                      : "4.11.0",
-            "bindingcollectionadapter":"4.0.0"
+            "bindingcollectionadapter"   : "4.0.0",
+            "SmartRefreshLayout"         : "2.0.1"
     ]
     //support配置:
     support = [
@@ -41,27 +42,29 @@ ext {
     //依赖第三方配置
     dependencies = [
             //rxjava
-            "rxjava"                 : "io.reactivex.rxjava3:rxjava:3.0.3",
-            "rxandroid"              : "io.reactivex.rxjava3:rxandroid:3.0.0",
+            "rxjava"                               : "io.reactivex.rxjava3:rxjava:3.0.3",
+            "rxandroid"                            : "io.reactivex.rxjava3:rxandroid:3.0.0",
 
             //network
-            "retrofit"               : "com.squareup.retrofit2:retrofit:${versions["retrofit"]}",
-            "retrofit-converter-gson": "com.squareup.retrofit2:converter-gson:${versions["retrofit"]}",
-            "retrofit-adapter-rxjava": "com.squareup.retrofit2:adapter-rxjava3:${versions["retrofit"]}",
-            "conscrypt-android"      : 'org.conscrypt:conscrypt-android:2.2.1',
-            "logging-interceptor"    : "com.squareup.okhttp3:logging-interceptor:4.7.2",
+            "retrofit"                             : "com.squareup.retrofit2:retrofit:${versions["retrofit"]}",
+            "retrofit-converter-gson"              : "com.squareup.retrofit2:converter-gson:${versions["retrofit"]}",
+            "retrofit-adapter-rxjava"              : "com.squareup.retrofit2:adapter-rxjava3:${versions["retrofit"]}",
+            "conscrypt-android"                    : 'org.conscrypt:conscrypt-android:2.2.1',
+            "logging-interceptor"                  : "com.squareup.okhttp3:logging-interceptor:4.7.2",
 
             //glide图片加载
-            "glide"                  : "com.github.bumptech.glide:glide:${versions["glide"]}",
-            "glide-compiler"         : "com.github.bumptech.glide:compiler:${versions["glide"]}",
-            "okhttp3-integration"    : "com.github.bumptech.glide:okhttp3-integration:${versions["glide"]}",
+            "glide"                                : "com.github.bumptech.glide:glide:${versions["glide"]}",
+            "glide-compiler"                       : "com.github.bumptech.glide:compiler:${versions["glide"]}",
+            "okhttp3-integration"                  : "com.github.bumptech.glide:okhttp3-integration:${versions["glide"]}",
 
             //json解析
-            "gson"                   : "com.google.code.gson:gson:2.8.6",
+            "gson"                                 : "com.google.code.gson:gson:2.8.6",
 
-            "utilcodex"              : "com.blankj:utilcodex:1.28.0",
-            "bindingcollectionadapter":"me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:${versions["bindingcollectionadapter"]}",
-            "bindingcollectionadapter-recyclerview":"me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:${versions["bindingcollectionadapter"]}"
+            "utilcodex"                            : "com.blankj:utilcodex:1.28.0",
+            "bindingcollectionadapter"             : "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:${versions["bindingcollectionadapter"]}",
+            "bindingcollectionadapter-recyclerview": "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:${versions["bindingcollectionadapter"]}",
+
+            "SmartRefreshLayout"                   : "com.scwang.smart:refresh-layout-kernel:${versions["SmartRefreshLayout"]}"
     ]
 
 }

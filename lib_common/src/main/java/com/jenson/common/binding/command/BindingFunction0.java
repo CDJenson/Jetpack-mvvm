@@ -7,5 +7,5 @@ package com.jenson.common.binding.command;
  * description: One-sentence description
  */
 public interface BindingFunction0<T> {
-    T call() throws Exception;
+    T call();
 }

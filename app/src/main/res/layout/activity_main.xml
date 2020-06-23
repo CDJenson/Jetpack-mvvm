@@ -4,15 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <import type="com.jenson.demo.R" />
 
         <variable
             name="viewModel"
             type="com.jenson.demo.viewmodel.MainViewModel" />
-
-        <variable
-            name="main"
-            type="com.jenson.demo.ui.MainActivity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,13 +17,23 @@
         android:layout_height="match_parent"
         tools:context=".ui.MainActivity">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/activity_recommend_song_rv"
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/am_srl_recommend_song"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            itemDecorationOrientation="@{1}"
-            itemDecorationSize="@{10}"
-            itemDecorationFirstLineVisible="@{true}"/>
+            onRefreshCommand="@{viewModel.onRefresh}"
+            onLoadMoreCommand="@{viewModel.onLoadMore}">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/am_rv_recommend_song"
+                itemDecorationFirstLineVisible="@{true}"
+                itemDecorationOrientation="@{1}"
+                itemDecorationSize="@{10}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

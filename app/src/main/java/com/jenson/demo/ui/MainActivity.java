@@ -2,6 +2,7 @@ package com.jenson.demo.ui;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.ViewDataBinding;
+import androidx.lifecycle.Observer;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -21,7 +22,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     @Override
     protected void initToolbar(MaterialToolbar toolbar) {
         super.initToolbar(toolbar);
-        toolbar.setTitle("首页");
+        toolbar.setTitle("每日推荐歌曲");
     }
 
     @Override
@@ -40,12 +41,21 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         RecomendSongAdapter adapter = new RecomendSongAdapter();
         adapter.setItemBinding(itemBinding);
         adapter.setItems(mViewModel.items);
-        mBinding.activityRecommendSongRv.setAdapter(adapter);
+        mBinding.amRvRecommendSong.setAdapter(adapter);
+
+        mViewModel.stopRefreshOrLoadMore.observe(this, new Observer() {
+            @Override
+            public void onChanged(Object o) {
+                mBinding.amSrlRecommendSong.finishLoadMore();
+                mBinding.amSrlRecommendSong.finishRefresh();
+            }
+        });
     }
 
     @Override
     public void initData() {
-        mViewModel.initData();
+        mViewModel.postShowLoadingViewEvent();
+        mViewModel.fetchData();
     }
 
     public static class RecomendSongAdapter extends BindingRecyclerViewAdapter<Song>{

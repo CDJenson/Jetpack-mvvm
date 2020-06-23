@@ -4,7 +4,9 @@ import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.blankj.utilcode.util.SizeUtils;
+import com.jenson.common.binding.command.BindingCommand;
 import com.jenson.common.widget.RecyclerViewItemDecoration;
+import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 
 /**
  * author: CDJenson
@@ -38,5 +40,16 @@ public class RecyclerViewBindingAdapter {
         }
         builer.setFirstLineVisible(itemDecorationFirstLineVisible);
         recyclerView.addItemDecoration(builer.create());
+    }
+
+    @BindingAdapter(value = {"onRefreshCommand","onLoadMoreCommand"},requireAll = false)
+    public static void onRefreshCommand(SmartRefreshLayout smartRefreshLayout, final BindingCommand onRefreshCommand, final BindingCommand onLoadMoreCommond) {
+        if(onRefreshCommand != null){
+            smartRefreshLayout.setOnRefreshListener(refreshLayout -> onRefreshCommand.execute());
+        }
+        if(onLoadMoreCommond != null){
+            smartRefreshLayout.setOnLoadMoreListener(refreshLayout -> onLoadMoreCommond.execute());
+        }
+
     }
 }
