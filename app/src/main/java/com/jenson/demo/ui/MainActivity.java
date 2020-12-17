@@ -43,11 +43,16 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         adapter.setItems(mViewModel.items);
         mBinding.amRvRecommendSong.setAdapter(adapter);
 
-        mViewModel.stopRefreshOrLoadMore.observe(this, new Observer() {
+        mViewModel.stopRefresh.observe(this, new Observer() {
             @Override
             public void onChanged(Object o) {
-                mBinding.amSrlRecommendSong.finishLoadMore();
                 mBinding.amSrlRecommendSong.finishRefresh();
+            }
+        });
+        mViewModel.stopLoadMore.observe(this, new Observer() {
+            @Override
+            public void onChanged(Object o) {
+                mBinding.amSrlRecommendSong.finishLoadMore(false);
             }
         });
     }

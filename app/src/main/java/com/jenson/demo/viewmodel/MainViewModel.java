@@ -28,10 +28,11 @@ public class MainViewModel extends BaseViewModel<MainModel> {
 
     public final ObservableList<Song> items = new ObservableArrayList<>();
 
-    public final SingleLiveEvent<Void> stopRefreshOrLoadMore = new SingleLiveEvent<>();
+    public final SingleLiveEvent<Void> stopRefresh = new SingleLiveEvent<>();
+    public final SingleLiveEvent<Void> stopLoadMore = new SingleLiveEvent<>();
 
     public final BindingCommand<?> onRefresh = new BindingCommand<>(this::fetchData);
-    public final BindingCommand<?> onLoadMore = new BindingCommand<>(() -> new Handler().postDelayed(stopRefreshOrLoadMore::call, 1500));
+    public final BindingCommand<?> onLoadMore = new BindingCommand<>(() -> new Handler().postDelayed(stopLoadMore::call, 1500));
 
     public MainViewModel(@NonNull Application application) {
         super(application);
@@ -50,7 +51,7 @@ public class MainViewModel extends BaseViewModel<MainModel> {
     public void fetchData() {
         mModel.recommendSongs()
                 .compose(RxAdapter.schedulersTransformer(this))
-                .doFinally(stopRefreshOrLoadMore::call)
+                .doFinally(stopRefresh::call)
                 .subscribe(new ApiObserver<RecommendSongsResponse>() {
                     @Override
                     public void onError(ApiException e) {
